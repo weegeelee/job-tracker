@@ -8,10 +8,12 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "server": "cd server && npx ts-node server.ts",
+    "server": "cd server && node --max-old-space-size=2048 -r ts-node/register server.ts",
     "dev": "concurrently \"npm run start\" \"npm run server\"",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "build-server": "cd server && tsc",
+    "start-server": "node --max-old-space-size=2048 server/dist/server.js"
   },
   "keywords": [],
   "author": "",
@@ -57,5 +59,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "engines": {
+    "node": ">=16.0.0"
   }
 }
