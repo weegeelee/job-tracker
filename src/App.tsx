@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import NewApp from "./components/NewApp";
 import JobList from "./components/JobList";
 import Dashboard from "./components/Dashboard";
@@ -38,7 +38,7 @@ const App: React.FC = () => {
   }
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <AppHeader isAuth={isAuth} setIsAuth={setIsAuth} />
       <Routes>
         <Route path="/" element={<Login setIsAuth={setIsAuth} />} />
@@ -48,7 +48,7 @@ const App: React.FC = () => {
         <Route path="/edit/:id" element={<NewApp isEditing={true} />} />
         <Route path="/analyse" element={<Dashboard />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 
 }
