@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/job-tracker/static/css/main.ea5afe17.css",
+    "main.js": "/job-tracker/static/js/main.9622ebb4.js",
+    "static/media/open.png": "/job-tracker/static/media/open.34a2c3b015047f5b9d9f.png",
+    "index.html": "/job-tracker/index.html",
+    "main.ea5afe17.css.map": "/job-tracker/static/css/main.ea5afe17.css.map",
+    "main.9622ebb4.js.map": "/job-tracker/static/js/main.9622ebb4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ea5afe17.css",
+    "static/js/main.9622ebb4.js"
+  ]
+}
