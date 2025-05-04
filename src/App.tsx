@@ -1,26 +1,56 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import NewApp from "./components/NewApp";
+import JobList from "./components/JobList";
+import Dashboard from "./components/Dashboard";
+import AppHeader from "./components/AppHeader";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
+import api from "./api";
 
-function App() {
+const App: React.FC = () => {
+  const [isAuth, setIsAuth] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      setIsAuth(false);
+      setLoading(false);
+      return;
+    }
+    const fetchIsAuth = async () => {
+      try {
+        await api.get("/auth/status");
+        setIsAuth(true);
+      } catch (error) {
+        console.error("Auth check failed:", error);
+        setIsAuth(false);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchIsAuth();
+  }, []);
+
+  if (loading) {
+    return <p>is loading...</p>;
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <AppHeader isAuth={isAuth} setIsAuth={setIsAuth} />
+      <Routes>
+        <Route path="/" element={<Login setIsAuth={setIsAuth} />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/list" element={<JobList />} />
+        <Route path="/application" element={<NewApp />} />
+        <Route path="/edit/:id" element={<NewApp isEditing={true} />} />
+        <Route path="/analyse" element={<Dashboard />} />
+      </Routes>
+    </BrowserRouter>
   );
+
 }
 
 export default App;
