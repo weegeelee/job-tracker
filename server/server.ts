@@ -23,7 +23,7 @@ connectDB()
         });
     })
     .catch((error) => {
-        console.error("Failed to connect to MongoDB", err);
+        console.error("Failed to connect to MongoDB", error);
     });
 
 export default app;
