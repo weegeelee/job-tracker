@@ -6,7 +6,6 @@ import Dashboard from "./components/Dashboard";
 import AppHeader from "./components/AppHeader";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
-import api from "./api";
 
 const App: React.FC = () => {
   const [isAuth, setIsAuth] = useState(false);
