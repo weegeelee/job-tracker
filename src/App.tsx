@@ -16,26 +16,9 @@ const App: React.FC = () => {
     const token = localStorage.getItem("token");
     if (!token) {
       setIsAuth(false);
-      setLoading(false);
-      return;
     }
-    const fetchIsAuth = async () => {
-      try {
-        await api.get("/auth/status");
-        setIsAuth(true);
-      } catch (error) {
-        console.error("Auth check failed:", error);
-        setIsAuth(false);
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchIsAuth();
+    setLoading(false);
   }, []);
-
-  if (loading) {
-    return <p>is loading...</p>;
-  }
 
   return (
     <HashRouter>
