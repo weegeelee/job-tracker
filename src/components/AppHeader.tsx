@@ -24,7 +24,7 @@ const AppHeader: React.FC<AppHeaderProps> = ({ isAuth, setIsAuth}) => {
         <div className="bg-stone-600 flex justify-center items-center w-full relative py-6">
             <h2 className="text-white text-3xl font-bold absolute left-1/2 transform -translate-x-1/2" >Job Tracker</h2>
             <nav className="text-white ml-auto mr-[10vw]">
-                {isAuth ? (<button onClick={handleClick}>{user.firstname} | Logout</button>)
+                {isAuth ? (<button onClick={handleClick}>Hallo! {user.firstname} | Logout</button>)
                   :  (<NavLink to={linkTo}>{linkText}</NavLink>)}
 
             </nav>

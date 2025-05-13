@@ -13,7 +13,10 @@ const App: React.FC = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    if (!token) {
+    const user = localStorage.getItem("user");
+    if (token && user) {
+      setIsAuth(true);
+    } else {
       setIsAuth(false);
     }
     setLoading(false);

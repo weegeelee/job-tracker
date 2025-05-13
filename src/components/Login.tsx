@@ -38,7 +38,7 @@ const Login: React.FC<{ setIsAuth: React.Dispatch<React.SetStateAction<boolean>>
         setFormData({ email: visitorEmail, password: visitorPassword });
         setLoading(true);
         try {
-            const response = await api.post("/login", formData);
+            const response = await api.post("/login", { email: visitorEmail, password: visitorPassword });
             localStorage.setItem("token", response.data.token);
             localStorage.setItem("user", JSON.stringify(response.data.user));
             setIsAuth(true);
